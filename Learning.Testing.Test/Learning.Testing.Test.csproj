@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.4.0" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.0" />
+    <PackageReference Include="Moq" Version="4.18.2" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+    <PackageReference Include="coverlet.collector" Version="3.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="FeatureTests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Learning.Testing.API\Learning.Testing.API.csproj" />
+    <ProjectReference Include="..\Learning.Testing.AppLib\Learning.Testing.AppLib.csproj" />
+    <ProjectReference Include="..\Learning.Testing.Bootstrap\Learning.Testing.Bootstrap.csproj" />
+    <ProjectReference Include="..\Learning.Testing.Data\Learning.Testing.Data.csproj" />
+    <ProjectReference Include="..\Learning.Testing.Models\Learning.Testing.Models.csproj" />
+    <ProjectReference Include="..\Learning.Testing.Utils\Learning.Testing.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
