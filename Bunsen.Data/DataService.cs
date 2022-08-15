@@ -57,6 +57,8 @@ namespace Bunsen.Data
             try
             {
                 await _connection.ExecuteAsync(sql, model);
+                model.Id = await _connection.ExecuteScalarAsync<int>(
+                    $"SELECT MAX(Id) FROM {typeof(T).Name};");
             }
             finally
             {
