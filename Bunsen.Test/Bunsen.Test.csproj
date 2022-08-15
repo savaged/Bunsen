@@ -28,9 +28,11 @@
     <ProjectReference Include="..\Bunsen.API\Bunsen.API.csproj" />
     <ProjectReference Include="..\Bunsen.AppLib\Bunsen.AppLib.csproj" />
     <ProjectReference Include="..\Bunsen.Bootstrap\Bunsen.Bootstrap.csproj" />
+    <ProjectReference Include="..\Bunsen.Core\Bunsen.Core.csproj" />
     <ProjectReference Include="..\Bunsen.Data\Bunsen.Data.csproj" />
     <ProjectReference Include="..\Bunsen.Models\Bunsen.Models.csproj" />
     <ProjectReference Include="..\Bunsen.Utils\Bunsen.Utils.csproj" />
+    <ProjectReference Include="..\Bunsen.ViewModels\Bunsen.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

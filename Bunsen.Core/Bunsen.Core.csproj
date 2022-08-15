@@ -6,12 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Bunsen.API\Bunsen.API.csproj" />
-    <ProjectReference Include="..\Bunsen.Core\Bunsen.Core.csproj" />
   </ItemGroup>
 
 </Project>

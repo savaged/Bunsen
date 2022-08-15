@@ -1,17 +1,22 @@
 ﻿using Bunsen.API;
+using Bunsen.Core;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Bunsen.Models
 {
-    public abstract class ModelBase : IModel
+    public abstract class ModelBase : ObservableObject, IModel
     {
         private int _id;
 
         public int Id
         {
             get => _id;
-            set => _id = value;
+            set
+            {
+                _id = value;
+                NotifyPropertyChanged();
+            }
         }
 
         public IDictionary<string, object> ToDictionary()

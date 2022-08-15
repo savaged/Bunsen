@@ -1,18 +1,18 @@
-using Bunsen.API;
 using Bunsen.Models;
 using Moq;
 using Moq.Dapper;
 using Dapper;
 using Bunsen.Data;
 using System.Data.Common;
+using Bunsen.ViewModels;
 
 namespace Bunsen.Test.FeatureTests;
 
 [TestClass]
 public class FeatureScenarioStepLogCRUD
 {
-    private IDataService? _dataService;
     private Mock<DbConnection>? _mockDbConnection;
+    private MainViewModel? _mainViewModel;
     
     [TestInitialize]
     public void Init()
@@ -28,18 +28,26 @@ public class FeatureScenarioStepLogCRUD
         _mockDbConnection.SetupDapperAsync(c => c.ExecuteAsync(
             It.IsAny<string>(), It.IsAny<ScenarioStepLog>(), null, null, null));
 
-        _dataService = new DataService(_mockDbConnection.Object);
+        _mainViewModel = new MainViewModel(new DataService(_mockDbConnection.Object));
     }
 
     [TestMethod]
-    public async Task StandardUserAddsModel()
+    public void StandardUserAddsModel()
     {
         var model = GetNewModel();
         var saved = GetNewModel();
         saved.Id = 1;
         _mockDbConnection.SetupDapperAsync(c => c.QuerySingleOrDefaultAsync<ScenarioStepLog>(
             It.IsAny<string>(), null, null, null, null)).ReturnsAsync(saved);
-        saved = await _dataService?.StoreAsync(model)!;
+        _mainViewModel?.ScenarioStepLogsViewModel.AddCmd.Execute(null);
+        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
+        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.Name = model.Name;
+        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.StartOfStep  = model.StartOfStep;
+        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.EndOfStep  = model.EndOfStep;
+        _mainViewModel.ScenarioStepLogViewModel.SaveCmd.Execute(null);
+        //saved = await _dataService?.StoreAsync(model)!;
+        Assert.IsNotNull(_mainViewModel.ScenarioStepLogViewModel.SelectedItem);
+        saved = _mainViewModel.ScenarioStepLogViewModel.SelectedItem;
         Assert.AreNotEqual(model.Id, saved.Id);
         Assert.AreEqual(model.Name, saved.Name);
         Assert.AreEqual(model.StartOfStep, saved.StartOfStep);
@@ -47,14 +55,22 @@ public class FeatureScenarioStepLogCRUD
     }
 
     [TestMethod]
-    public async Task StandardUserAddsModelTwice()
+    public void StandardUserAddsModelTwice()
     {
         var model1 = GetNewModel();
         var saved1 = GetNewModel();
         saved1.Id = 1;
         _mockDbConnection.SetupDapperAsync(c => c.QuerySingleOrDefaultAsync<ScenarioStepLog>(
             It.IsAny<string>(), null, null, null, null)).ReturnsAsync(saved1);
-        saved1 = await _dataService?.StoreAsync(model1)!;
+        _mainViewModel?.ScenarioStepLogsViewModel.AddCmd.Execute(null);
+        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
+        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.Name = model1.Name;
+        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.StartOfStep  = model1.StartOfStep;
+        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.EndOfStep  = model1.EndOfStep;
+        _mainViewModel.ScenarioStepLogViewModel.SaveCmd.Execute(null);
+        //saved1 = await _dataService?.StoreAsync(model1)!;
+        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
+        saved1 = _mainViewModel.ScenarioStepLogViewModel.SelectedItem;
         Assert.AreNotEqual(model1.Id, saved1.Id);
         Assert.AreEqual(model1.Name, saved1.Name);
         Assert.AreEqual(model1.StartOfStep, saved1.StartOfStep);
@@ -68,7 +84,15 @@ public class FeatureScenarioStepLogCRUD
         saved2.Id = 2;
         _mockDbConnection.SetupDapperAsync(c => c.QuerySingleOrDefaultAsync<ScenarioStepLog>(
             It.IsAny<string>(), null, null, null, null)).ReturnsAsync(saved2);
-        saved2 = await _dataService?.StoreAsync(model2)!;
+        _mainViewModel?.ScenarioStepLogsViewModel.AddCmd.Execute(null);
+        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
+        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.Name = model2.Name;
+        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.StartOfStep  = model2.StartOfStep;
+        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.EndOfStep  = model2.EndOfStep;
+        _mainViewModel.ScenarioStepLogViewModel.SaveCmd.Execute(null);
+        //saved2 = await _dataService?.StoreAsync(model2)!;
+        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
+        saved2 = _mainViewModel.ScenarioStepLogViewModel.SelectedItem;
         Assert.AreNotEqual(model2.Id, saved2.Id);
         Assert.AreEqual(model2.Name, saved2.Name);
         Assert.AreEqual(model2.StartOfStep, saved2.StartOfStep);
@@ -84,30 +108,43 @@ public class FeatureScenarioStepLogCRUD
             It.IsAny<string>(), null, null, null, null))
             .ReturnsAsync(new ScenarioStepLog[] { GetNewModel(), GetNewModel() });
 
-        var index = await _dataService?.IndexAsync<ScenarioStepLog>()!;
-        Assert.AreEqual(2, index.Count());
+        //var index = await _dataService?.IndexAsync<ScenarioStepLog>()!;
+        await _mainViewModel?.LoadAsync()!;
+        Assert.AreEqual(2, _mainViewModel?.ScenarioStepLogsViewModel.Index.Count);
     }
 
     [TestMethod]
-    public async Task StandardUserUpdatesModel()
+    public void StandardUserUpdatesModel()
     {
         var model = GetNewModel();
         model.Id = 1;
         model.Name = "UpdatedTestStep";
-        await _dataService?.UpdateAsync(model)!;
+        //await _dataService?.UpdateAsync(model)!;
+        _mainViewModel!.ScenarioStepLogViewModel.SelectedItem = model;
+        _mainViewModel?.ScenarioStepLogViewModel.SaveCmd.Execute(null);
+        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
+        var saved = _mainViewModel!.ScenarioStepLogViewModel.SelectedItem;
+        Assert.AreEqual(model.Id, saved.Id);
+        Assert.AreEqual(model.Name, saved.Name);
     }
 
     [TestMethod]
-    public async Task StandardUserDeletesModel()
+    public void StandardUserDeletesModel()
     {
         _mockDbConnection.SetupDapperAsync(c => c.QueryAsync<ScenarioStepLog>(
             It.IsAny<string>(), null, null, null, null));
 
-        await _dataService?.DeleteAsync<ScenarioStepLog>(1)!;
+        var model = GetNewModel();
+        model.Id = 1;
+        model.Name = "DeleteMe";
+        //await _dataService?.DeleteAsync<ScenarioStepLog>(1)!;
+        _mainViewModel!.ScenarioStepLogViewModel.SelectedItem = model;
+        _mainViewModel?.ScenarioStepLogViewModel.DeleteCmd.Execute(null);
+        Assert.IsNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
     }
 
 
-    private ScenarioStepLog GetNewModel()
+    private static ScenarioStepLog GetNewModel()
     {
         return new ScenarioStepLog
         {
