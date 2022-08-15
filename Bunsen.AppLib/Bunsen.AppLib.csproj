@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bunsen.API\Bunsen.API.csproj" />
+    <ProjectReference Include="..\Bunsen.Data\Bunsen.Data.csproj" />
+    <ProjectReference Include="..\Bunsen.Models\Bunsen.Models.csproj" />
+    <ProjectReference Include="..\Bunsen.Utils\Bunsen.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
