@@ -28,7 +28,7 @@ public class FeatureScenarioStepLogCRUD
     }
 
     [TestMethod]
-    public async Task StandardUserAddsScenarioStepLog()
+    public async Task StandardUserAddsModelLog()
     {
         var model = GetNewModel();
         var saved = await _dataService?.StoreAsync(model)!;
@@ -42,7 +42,7 @@ public class FeatureScenarioStepLogCRUD
     {
         return new ScenarioStepLog
         {
-            Name = "TestStep1",
+            Name = "TestStep",
             StartOfStep = new DateTime(2022, 8, 14, 8, 25, 30),
             EndOfStep = new DateTime(2022, 8, 14, 8, 26, 18),
         };
