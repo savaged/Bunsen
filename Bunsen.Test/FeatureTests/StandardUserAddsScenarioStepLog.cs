@@ -5,6 +5,7 @@ using Dapper;
 using Bunsen.Data;
 using System.Data.Common;
 using Bunsen.ViewModels;
+using Bunsen.ViewModels.Core;
 
 namespace Bunsen.Test.FeatureTests;
 
@@ -28,7 +29,9 @@ public class FeatureScenarioStepLogCRUD
         _mockDbConnection.SetupDapperAsync(c => c.ExecuteAsync(
             It.IsAny<string>(), It.IsAny<ScenarioStepLog>(), null, null, null));
 
-        _mainViewModel = new MainViewModel(new DataService(_mockDbConnection.Object));
+        _mainViewModel = new MainViewModel(
+            BusyStateManager.Instance,
+            new DataService(_mockDbConnection.Object));
     }
 
     [TestMethod]

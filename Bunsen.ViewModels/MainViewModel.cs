@@ -7,10 +7,13 @@ namespace Bunsen.ViewModels
 {
     public class MainViewModel : ViewModelBase, IAsyncLoading
     {
-        public MainViewModel(IDataService dataService) : base(dataService)
+        public MainViewModel(
+            IBusyStateManager busyStateManager,
+            IDataService dataService)
+            : base(busyStateManager, dataService)
         {
-            ScenarioStepLogViewModel = new ScenarioStepLogViewModel(dataService);
-            ScenarioStepLogsViewModel = new ScenarioStepLogsViewModel(dataService);
+            ScenarioStepLogViewModel = new ScenarioStepLogViewModel(busyStateManager, dataService);
+            ScenarioStepLogsViewModel = new ScenarioStepLogsViewModel(busyStateManager, dataService);
 
             ScenarioStepLogsViewModel.AddingModel += OnAddingModel;
         }

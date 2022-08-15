@@ -6,13 +6,19 @@ namespace Bunsen.ViewModels
 {
     public abstract class ViewModelBase : ObservableObject
     {
-        public ViewModelBase(IDataService dataService)
+        public ViewModelBase(
+            IBusyStateManager busyStateManager,
+            IDataService dataService)
         {
+            BusyStateManager = busyStateManager ??
+                throw new ArgumentNullException(nameof(busyStateManager));
             DataService = dataService ??
                 throw new ArgumentNullException(nameof(dataService));
         }
 
-        public bool CanExecute = true; // TODO add busy state
+        protected IBusyStateManager BusyStateManager { get; }
+
+        public bool CanExecute => BusyStateManager.IsBusy;
 
         protected IDataService DataService { get; }
 

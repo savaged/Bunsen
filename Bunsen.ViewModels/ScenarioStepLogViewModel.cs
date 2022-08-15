@@ -8,7 +8,10 @@ namespace Bunsen.ViewModels
     {
         private ScenarioStepLog? _selectedItem;
 
-        public ScenarioStepLogViewModel(IDataService dataService) : base(dataService)
+        public ScenarioStepLogViewModel(
+            IBusyStateManager busyStateManager,
+            IDataService dataService)
+            : base(busyStateManager, dataService)
         {
             SaveCmd = new RelayCommand(OnSave, () => CanExecuteSave);
             DeleteCmd = new RelayCommand(OnDelete, () => CanExecuteDelete);
@@ -36,13 +39,21 @@ namespace Bunsen.ViewModels
         {
             if (SelectedItem == null) return;
 
-            if (SelectedItem?.Id == 0)
+            BusyStateManager.RegisterBusiness();
+            try
             {
-                SelectedItem = await DataService!.StoreAsync(SelectedItem!);
+                if (SelectedItem?.Id == 0)
+                {
+                    SelectedItem = await DataService!.StoreAsync(SelectedItem!);
+                }
+                else
+                {
+                    await DataService!.UpdateAsync(SelectedItem!);
+                }
             }
-            else
+            finally
             {
-                await DataService!.UpdateAsync(SelectedItem!);
+                BusyStateManager.UnregisterBusiness();
             }
         }
 
@@ -50,9 +61,16 @@ namespace Bunsen.ViewModels
         {
             if (SelectedItem == null) return;
 
-            await DataService!.DeleteAsync<ScenarioStepLog>(SelectedItem!.Id);
-
-            SelectedItem = null;
+            BusyStateManager.RegisterBusiness();
+            try
+            {
+                await DataService!.DeleteAsync<ScenarioStepLog>(SelectedItem!.Id);
+                SelectedItem = null;
+            }
+            finally
+            {
+                BusyStateManager.UnregisterBusiness();
+            }
         }
 
     }
