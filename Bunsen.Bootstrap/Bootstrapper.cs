@@ -6,6 +6,7 @@ using Bunsen.Utils;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Data;
+using System.IO;
 
 namespace Bunsen.Bootstrap
 {
@@ -18,7 +19,7 @@ namespace Bunsen.Bootstrap
             var builder = new ContainerBuilder();
             builder.RegisterType<FeedbackService>().As<IFeedbackService>();
             builder.RegisterType<SqliteConnection>().As<IDbConnection>()
-                .WithParameter("connectionString", "Data Source=..\\..\\..\\..\\Database.sqlite3;");
+                .WithParameter("connectionString", $"Data Source=..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Database.sqlite3;");
             builder.RegisterType<DataService>().As<IDataService>();
             builder.RegisterType<App>().As<IApp>();
             _scope = builder.Build().BeginLifetimeScope();
