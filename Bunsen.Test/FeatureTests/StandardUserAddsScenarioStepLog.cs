@@ -25,6 +25,8 @@ public class FeatureScenarioStepLogCRUD
             It.IsAny<string>(), null, null, null, null)).ReturnsAsync(GetNewModel());
         _mockDbConnection.SetupDapperAsync(c => c.ExecuteScalarAsync<int>(
             It.IsAny<string>(), null, null, null, null)).ReturnsAsync(1);
+        _mockDbConnection.SetupDapperAsync(c => c.ExecuteAsync(
+            It.IsAny<string>(), It.IsAny<ScenarioStepLog>(), null, null, null));
 
         _dataService = new DataService(_mockDbConnection.Object);
     }
@@ -85,6 +87,25 @@ public class FeatureScenarioStepLogCRUD
         var index = await _dataService?.IndexAsync<ScenarioStepLog>()!;
         Assert.AreEqual(2, index.Count());
     }
+
+    [TestMethod]
+    public async Task StandardUserUpdatesModel()
+    {
+        var model = GetNewModel();
+        model.Id = 1;
+        model.Name = "UpdatedTestStep";
+        await _dataService?.UpdateAsync(model)!;
+    }
+
+    [TestMethod]
+    public async Task StandardUserDeletesModel()
+    {
+        _mockDbConnection.SetupDapperAsync(c => c.QueryAsync<ScenarioStepLog>(
+            It.IsAny<string>(), null, null, null, null));
+
+        await _dataService?.DeleteAsync<ScenarioStepLog>(1)!;
+    }
+
 
     private ScenarioStepLog GetNewModel()
     {
