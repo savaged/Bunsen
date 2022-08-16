@@ -18,12 +18,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bunsen.Utils", "Bunsen.Utils\Bunsen.Utils.csproj", "{F9413EBC-9882-4392-AE4B-7C8F107E0022}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{225F6E9C-DCEB-4919-9191-D197D9717D13}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bunsen.Test", "Bunsen.Test\Bunsen.Test.csproj", "{C198315E-37CB-4183-9183-A415D4CEECDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bunsen.ViewModels", "Bunsen.ViewModels\Bunsen.ViewModels.csproj", "{54DDE1EF-D37A-47B8-9ECF-9D03835DF752}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bunsen.ViewModels", "Bunsen.ViewModels\Bunsen.ViewModels.csproj", "{54DDE1EF-D37A-47B8-9ECF-9D03835DF752}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bunsen.Core", "Bunsen.Core\Bunsen.Core.csproj", "{0F8B91DA-0CF1-4ECD-9414-9FDCC33E7FCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bunsen.Core", "Bunsen.Core\Bunsen.Core.csproj", "{0F8B91DA-0CF1-4ECD-9414-9FDCC33E7FCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
