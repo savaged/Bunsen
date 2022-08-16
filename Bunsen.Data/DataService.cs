@@ -63,7 +63,7 @@ namespace Bunsen.Data
             {
                 _connection.Close();
             }
-            return await ShowAsync<T>(model.Id);
+            return model;
         }
 
         public async Task UpdateAsync<T>(T model) where T : notnull, IModel
