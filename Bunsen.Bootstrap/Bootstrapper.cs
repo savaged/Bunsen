@@ -11,14 +11,14 @@ namespace Bunsen.Bootstrap
 {
     public class Bootstrapper : IDisposable
     {
-        private ILifetimeScope _scope;
+        private readonly ILifetimeScope _scope;
 
         public Bootstrapper() : this(new List<Module>()) { }
 
         public Bootstrapper(Module module)
             : this(new List<Module> { module }) { }
 
-        public Bootstrapper(IList<Module> modules)
+        public Bootstrapper(IEnumerable<Module> modules)
         {
             var builder = new ContainerBuilder();
 
@@ -26,12 +26,9 @@ namespace Bunsen.Bootstrap
                 .WithParameter("connectionString", $"Data Source=..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Database.sqlite3;");
             builder.RegisterType<DataService>().As<IDataService>();
 
-            if (modules != null)
+            foreach (var module in modules)
             {
-                foreach (var module in modules)
-                {
-                    builder.RegisterModule(module);
-                }
+                builder.RegisterModule(module);
             }
             _scope = builder.Build().BeginLifetimeScope();
         }
