@@ -3,7 +3,7 @@ using System;
 
 namespace Bunsen.Utils
 {
-    public class FeedbackService : IFeedbackService
+    public class ConsoleFeedbackService : IFeedbackService
     {
         public void Feedback(string output)
         {

@@ -51,7 +51,6 @@ namespace Bunsen.Data
 
         public async Task<T> StoreAsync<T>(T model) where T : notnull, IModel
         {
-
             var sql = $"INSERT INTO {typeof(T).Name} ({GetColumns(model)}) VALUES ({GetParameterNames(model)});";
             _connection.Open();
             try
@@ -70,11 +69,10 @@ namespace Bunsen.Data
         public async Task UpdateAsync<T>(T model) where T : notnull, IModel
         {
             var sb = new StringBuilder($"UPDATE {typeof(T).Name} SET ");
-            var names = GetPropertyNames(model);
+            var names = GetPropertyNames(model, true);
             var separator = string.Empty;
             foreach (var name in names)
             {
-                if (name == nameof(IModel.Id)) break;
                 sb.Append(separator);
                 sb.Append($"{name} = @{name}");
                 separator = ", ";
@@ -105,17 +103,18 @@ namespace Bunsen.Data
             }
         }
 
-        private string GetColumns(IModel model)
+        private string GetColumns(IModel model, bool excludeId = true)
         {
-            return GetDelimitedPropertyNames(GetPropertyNames(model), ", ");
+            return GetDelimitedPropertyNames(GetPropertyNames(model, excludeId), ", ");
         }
 
-        private string GetParameterNames(IModel model)
+        private string GetParameterNames(IModel model, bool excludeId = true)
         {
-            return $"@{GetDelimitedPropertyNames(GetPropertyNames(model), ", @")}";
+            return $"@{GetDelimitedPropertyNames(GetPropertyNames(model, excludeId), ", @")}";
         }
 
-        private string GetDelimitedPropertyNames(IList<string> propertyNames, string delimiter)
+        private string GetDelimitedPropertyNames(
+            IList<string> propertyNames, string delimiter)
         {
             var sb = new StringBuilder();
             var separator = string.Empty;
@@ -128,11 +127,12 @@ namespace Bunsen.Data
             return sb.ToString();
         }
 
-        private IList<string> GetPropertyNames(IModel model)
+        private IList<string> GetPropertyNames(IModel model, bool excludeId)
         {
             IList<string> names = new List<string>();
             foreach (var p in model.GetType().GetProperties())
             {
+                if (excludeId && p.Name == nameof(IModel.Id)) continue;
                 names.Add(p.Name);
             }
             return names;

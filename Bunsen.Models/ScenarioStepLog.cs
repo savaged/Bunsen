@@ -2,6 +2,16 @@
 
 namespace Bunsen.Models
 {
+    /// <summary>
+    /// CREATE TABLE "ScenarioStepLog" (
+    ///     "Id"    INTEGER NOT NULL,
+    ///     "Name"  TEXT NOT NULL,
+    ///     "IsPassing" INTEGER NOT NULL DEFAULT 0,
+    ///     "StartOfStep"   TEXT,
+    ///     "EndOfStep" TEXT,
+    ///     PRIMARY KEY("Id" AUTOINCREMENT)
+    /// );
+    /// </summary>
     public class ScenarioStepLog : ModelBase
     {
         private string _name = string.Empty;

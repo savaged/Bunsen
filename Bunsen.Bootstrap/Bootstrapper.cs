@@ -1,10 +1,9 @@
 ﻿using Autofac;
 using Bunsen.API;
-using Bunsen.AppLib;
 using Bunsen.Data;
-using Bunsen.Utils;
 using Microsoft.Data.Sqlite;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 
@@ -14,18 +13,33 @@ namespace Bunsen.Bootstrap
     {
         private ILifetimeScope _scope;
 
-        public Bootstrapper()
+        public Bootstrapper() : this(new List<Module>()) { }
+
+        public Bootstrapper(Module module)
+            : this(new List<Module> { module }) { }
+
+        public Bootstrapper(IList<Module> modules)
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<FeedbackService>().As<IFeedbackService>();
+
             builder.RegisterType<SqliteConnection>().As<IDbConnection>()
                 .WithParameter("connectionString", $"Data Source=..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Database.sqlite3;");
             builder.RegisterType<DataService>().As<IDataService>();
-            builder.RegisterType<App>().As<IApp>();
+
+            if (modules != null)
+            {
+                foreach (var module in modules)
+                {
+                    builder.RegisterModule(module);
+                }
+            }
             _scope = builder.Build().BeginLifetimeScope();
         }
 
-        public IApp App => _scope.Resolve<IApp>();
+        public T Resolve<T>() where T : notnull
+        {
+            return _scope.Resolve<T>();
+        }
 
         public void Dispose()
         {
