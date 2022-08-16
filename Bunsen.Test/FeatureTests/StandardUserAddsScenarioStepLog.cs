@@ -24,8 +24,6 @@ public class FeatureScenarioStepLogCRUD
             .ReturnsAsync(1);
         _mockDbConnection.SetupDapperAsync(c => c.QuerySingleOrDefaultAsync<ScenarioStepLog>(
             It.IsAny<string>(), null, null, null, null)).ReturnsAsync(GetNewModel());
-        _mockDbConnection.SetupDapperAsync(c => c.ExecuteScalarAsync<int>(
-            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(1);
         _mockDbConnection.SetupDapperAsync(c => c.ExecuteAsync(
             It.IsAny<string>(), It.IsAny<ScenarioStepLog>(), null, null, null));
 
@@ -42,6 +40,9 @@ public class FeatureScenarioStepLogCRUD
         saved.Id = 1;
         _mockDbConnection.SetupDapperAsync(c => c.QuerySingleOrDefaultAsync<ScenarioStepLog>(
             It.IsAny<string>(), null, null, null, null)).ReturnsAsync(saved);
+        _mockDbConnection.SetupDapperAsync(c => c.ExecuteScalarAsync<int>(
+            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(1);
+        
         _mainViewModel?.ScenarioStepLogsViewModel.AddCmd.Execute(null);
         Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
         _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.Name = model.Name;
@@ -64,6 +65,9 @@ public class FeatureScenarioStepLogCRUD
         saved1.Id = 1;
         _mockDbConnection.SetupDapperAsync(c => c.QuerySingleOrDefaultAsync<ScenarioStepLog>(
             It.IsAny<string>(), null, null, null, null)).ReturnsAsync(saved1);
+        _mockDbConnection.SetupDapperAsync(c => c.ExecuteScalarAsync<int>(
+            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(1);
+        
         _mainViewModel?.ScenarioStepLogsViewModel.AddCmd.Execute(null);
         Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
         _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.Name = model1.Name;
@@ -77,19 +81,20 @@ public class FeatureScenarioStepLogCRUD
         Assert.AreEqual(model1.StartOfStep, saved1.StartOfStep);
         Assert.AreEqual(model1.EndOfStep, saved1.EndOfStep);
 
-        _mockDbConnection.SetupDapperAsync(c => c.ExecuteScalarAsync<int>(
-            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(2);
-
         var model2 = GetNewModel();
         var saved2 = GetNewModel();
         saved2.Id = 2;
-        _mockDbConnection.SetupDapperAsync(c => c.QuerySingleOrDefaultAsync<ScenarioStepLog>(
-            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(saved2);
         _mainViewModel?.ScenarioStepLogsViewModel.AddCmd.Execute(null);
         Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
         _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.Name = model2.Name;
         _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.StartOfStep  = model2.StartOfStep;
         _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.EndOfStep  = model2.EndOfStep;
+        
+        _mockDbConnection.SetupDapperAsync(c => c.ExecuteScalarAsync<int>(
+            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(2);
+        _mockDbConnection.SetupDapperAsync(c => c.QuerySingleOrDefaultAsync<ScenarioStepLog>(
+            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(saved2);
+        
         _mainViewModel.ScenarioStepLogViewModel.SaveCmd.Execute(null);
         Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
         saved2 = _mainViewModel.ScenarioStepLogViewModel.SelectedItem;
