@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="FeatureTests\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Bunsen.API\Bunsen.API.csproj" />
     <ProjectReference Include="..\Bunsen.AppLib\Bunsen.AppLib.csproj" />
     <ProjectReference Include="..\Bunsen.Bootstrap\Bunsen.Bootstrap.csproj" />
