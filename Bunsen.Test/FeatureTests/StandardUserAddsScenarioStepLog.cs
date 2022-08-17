@@ -33,20 +33,24 @@ public class FeatureScenarioStepLogCRUD
     }
 
     [TestMethod]
-    public void StandardUserAddsAndSavesModel()
+    public void StandardUserAddsModel()
     {
         // Given
-        var model = GetNewModel();
-        var saved = GetNewModel();
-        saved.Id = 1;
-        _mockDbConnection.SetupDapperAsync(c => c.ExecuteScalarAsync<int>(
-            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(1);
+        Assert.IsNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
         // When
         _mainViewModel?.ScenarioStepLogsViewModel.AddCmd.Execute(null);
         // Then
         Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
+    }
 
+    [TestMethod]
+    public void StandardUserSavesModel()
+    {
         // Given
+        var model = GetNewModel();
+        _mockDbConnection.SetupDapperAsync(c => c.ExecuteScalarAsync<int>(
+            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(1);
+        _mainViewModel!.ScenarioStepLogViewModel.SelectedItem = model;
         _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.Name = model.Name;
         _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.StartOfStep  = model.StartOfStep;
         _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.EndOfStep  = model.EndOfStep;
@@ -54,13 +58,11 @@ public class FeatureScenarioStepLogCRUD
         _mainViewModel.ScenarioStepLogViewModel.SaveCmd.Execute(null);
         // Then
         Assert.IsNotNull(_mainViewModel.ScenarioStepLogViewModel.SelectedItem);
-        saved = _mainViewModel.ScenarioStepLogViewModel.SelectedItem;
-        Assert.AreNotEqual(model.Id, saved.Id);
+        var saved = _mainViewModel.ScenarioStepLogViewModel.SelectedItem;
         Assert.AreEqual(model.Name, saved.Name);
         Assert.AreEqual(model.StartOfStep, saved.StartOfStep);
         Assert.AreEqual(model.EndOfStep, saved.EndOfStep);
     }
-
 
     [TestMethod]
     public async Task StandardUserListsModels()
