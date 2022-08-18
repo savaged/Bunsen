@@ -110,8 +110,9 @@ public class Feature__ScenarioStepLog_CRUD
         _mockDbConnection.SetupDapperAsync(
             c => c.ExecuteAsync(It.IsAny<string>(), It.IsAny<ScenarioStepLog>(), null, null, null))
             .ReturnsAsync(1);
-        _mockDbConnection.SetupDapperAsync(c => c.ExecuteAsync(
-            It.IsAny<string>(), It.IsAny<ScenarioStepLog>(), null, null, null));
+        _mockDbConnection.SetupDapperAsync(
+            c => c.ExecuteAsync(It.IsAny<string>(), It.IsAny<ScenarioStepLog>(), null, null, null))
+            .ReturnsAsync(1);
     }
 
     private void Given_the_Main_View_is_open()
