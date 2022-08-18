@@ -18,10 +18,7 @@ public class Feature__ScenarioStepLog_CRUD
     private MainViewModel? _mainViewModel;
     
     /// <summary>
-    /// Note:
-    /// 
-    ///     Given definition of 'not new' is the ScenarioStepLog.Id is greater than 0
-    ///
+    /// Rule: Given definition of 'not new' is the ScenarioStepLog.Id is greater than 0
     /// </summary>
     [TestInitialize]
     public void Background__()
@@ -80,7 +77,7 @@ public class Feature__ScenarioStepLog_CRUD
 
         When_a_Standard_User_clicks_Save();
 
-        Then_a_new_ScenarioStepLog_is_available();
+        Then_the_ScenarioStepLog_is_available();
         Then_the_ScenarioStepLog_Id_is(1);
         Then_the_ScenarioStepLog_Name_is("UpdatedTestStep");
         Then_the_ScenarioStepLog_IsPassing_is(true);
@@ -236,6 +233,12 @@ public class Feature__ScenarioStepLog_CRUD
 
 
     private void Then_a_new_ScenarioStepLog_is_available()
+    {
+        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
+    
+    private void Then_the_ScenarioStepLog_is_available()
     {
         Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem,
             MethodBase.GetCurrentMethod()?.Name);
