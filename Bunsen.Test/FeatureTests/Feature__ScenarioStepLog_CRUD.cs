@@ -4,6 +4,8 @@ using Moq.Dapper;
 using Dapper;
 using Bunsen.Data;
 using System.Data.Common;
+using System.Reflection;
+using Bunsen.Utils;
 using Bunsen.ViewModels;
 using Bunsen.ViewModels.Core;
 
@@ -37,73 +39,68 @@ public class Feature__ScenarioStepLog_CRUD
     }
 
     [TestMethod]
-    public void StandardUserSavesANewModel()
+    public void Scenario__A_Standard_User_saves_a_new_ScenarioStepLog()
     {
-        // Given
-        var model = GetNewModel();
-        _mockDbConnection.SetupDapperAsync(c => c.ExecuteScalarAsync<int>(
-            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(1);
-        _mainViewModel!.ScenarioStepLogViewModel.SelectedItem = model;
-        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.Name = model.Name;
-        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.StartOfStep  = model.StartOfStep;
-        _mainViewModel.ScenarioStepLogViewModel.SelectedItem!.EndOfStep  = model.EndOfStep;
-        // When
-        _mainViewModel.ScenarioStepLogViewModel.SaveCmd.Execute(null);
-        // Then
-        Assert.IsNotNull(_mainViewModel.ScenarioStepLogViewModel.SelectedItem);
-        var saved = _mainViewModel.ScenarioStepLogViewModel.SelectedItem;
-        Assert.AreEqual(1, saved.Id);
-        Assert.AreEqual(model.Name, saved.Name);
-        Assert.AreEqual(model.StartOfStep, saved.StartOfStep);
-        Assert.AreEqual(model.EndOfStep, saved.EndOfStep);
+        Given_a_new_ScenarioStepLog();
+        Given_the_ScenarioStepLog_Id_is(0);
+        Given_the_ScenarioStepLog_Name_is("TestStep");
+        Given_the_ScenarioStepLog_IsPassing_is(false);
+        Given_the_ScenarioStepLog_StartOfStep_is("2022-08-14 08:25:30");
+        Given_the_ScenarioStepLog_EndOfStep_is("2022-08-14 08:26:18");
+
+        When_a_Standard_User_clicks_Save();
+
+        Then_a_new_ScenarioStepLog_is_available();
+        Then_the_saved_ScenarioStepLog_is_not_new();
+        Then_the_ScenarioStepLog_Name_is("TestStep");
+        Then_the_ScenarioStepLog_IsPassing_is(false);
+        Then_the_saved_ScenarioStepLog_StartOfStep_is("2022-08-14 08:25:30");
+        Then_the_saved_ScenarioStepLog_EndOfStep_is("2022-08-14 08:26:18");
     }
 
     [TestMethod]
-    public async Task StandardUserListsModels()
+    public async Task Scenario__A_Standard_User_lists_all_ScenarioStepLogs()
     {
-        // Given
-        _mockDbConnection.SetupDapperAsync(c => c.QueryAsync<ScenarioStepLog>(
-            It.IsAny<string>(), null, null, null, null))
-            .ReturnsAsync(new ScenarioStepLog[] { GetNewModel(), GetNewModel() });
+        Given_there_are_2_ScenarioStepLog_that_are_not_new();
 
-        // When
-        await _mainViewModel?.LoadAsync()!;
-        // Then
-        Assert.AreEqual(2, _mainViewModel?.ScenarioStepLogsViewModel.Index.Count);
+        await When_a_Standard_User_opens_the_main_view();
+    
+        Then_2_ScenarioStepLogs_are_listed();
     }
 
     [TestMethod]
-    public void StandardUserUpdatesModel()
+    public void Scenario__A_Standard_User_saves_an_existing_ScenarioStepLog()
     {
-        // Given
-        var model = GetNewModel();
-        model.Id = 1;
-        model.Name = "UpdatedTestStep";
-        _mainViewModel!.ScenarioStepLogViewModel.SelectedItem = model;
-        // When
-        _mainViewModel?.ScenarioStepLogViewModel.SaveCmd.Execute(null);
-        // Then
-        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
-        var saved = _mainViewModel!.ScenarioStepLogViewModel.SelectedItem;
-        Assert.AreEqual(model.Id, saved.Id);
-        Assert.AreEqual(model.Name, saved.Name);
+        Given_an_existing_ScenarioStepLog();
+        Given_the_ScenarioStepLog_Id_is(1);
+        Given_the_ScenarioStepLog_Name_is("UpdatedTestStep");
+        Given_the_ScenarioStepLog_IsPassing_is_toggled_to(true);
+        Given_the_ScenarioStepLog_StartOfStep_is("2022-08-14 08:25:30");
+        Given_the_ScenarioStepLog_EndOfStep_is("2022-08-14 08:26:18");
+
+        When_a_Standard_User_clicks_Save();
+
+        Then_a_new_ScenarioStepLog_is_available();
+        Then_the_ScenarioStepLog_Id_is(1);
+        Then_the_ScenarioStepLog_Name_is("UpdatedTestStep");
+        Then_the_ScenarioStepLog_IsPassing_is(true);
+        Then_the_saved_ScenarioStepLog_StartOfStep_is("2022-08-14 08:25:30");
+        Then_the_saved_ScenarioStepLog_EndOfStep_is("2022-08-14 08:26:18");
     }
 
     [TestMethod]
-    public void StandardUserDeletesModel()
+    public void Scenario__A_Standard_User_deletes_an_existing_ScenarioStepLog()
     {
-        // Given
-        _mockDbConnection.SetupDapperAsync(c => c.QueryAsync<ScenarioStepLog>(
-            It.IsAny<string>(), null, null, null, null));
+        Given_an_existing_ScenarioStepLog();
+        Given_the_ScenarioStepLog_Id_is(1);
+        Given_the_ScenarioStepLog_Name_is("DeleteMe");
+        Given_the_ScenarioStepLog_IsPassing_is(false);
+        Given_the_ScenarioStepLog_StartOfStep_is("2022-08-14 08:25:30");
+        Given_the_ScenarioStepLog_EndOfStep_is("2022-08-14 08:26:18");
 
-        var model = GetNewModel();
-        model.Id = 1;
-        model.Name = "DeleteMe";
-        _mainViewModel!.ScenarioStepLogViewModel.SelectedItem = model;
-        // When
-        _mainViewModel?.ScenarioStepLogViewModel.DeleteCmd.Execute(null);
-        // Then
-        Assert.IsNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
+        When_a_Standard_User_clicks_Delete();
+
+        Then_the_ScenarioStepLog_is_gone();
     }
 
 
@@ -113,8 +110,6 @@ public class Feature__ScenarioStepLog_CRUD
         _mockDbConnection.SetupDapperAsync(
             c => c.ExecuteAsync(It.IsAny<string>(), It.IsAny<ScenarioStepLog>(), null, null, null))
             .ReturnsAsync(1);
-        _mockDbConnection.SetupDapperAsync(c => c.QuerySingleOrDefaultAsync<ScenarioStepLog>(
-            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(GetNewModel());
         _mockDbConnection.SetupDapperAsync(c => c.ExecuteAsync(
             It.IsAny<string>(), It.IsAny<ScenarioStepLog>(), null, null, null));
     }
@@ -129,27 +124,170 @@ public class Feature__ScenarioStepLog_CRUD
         }
     }
 
+    private void Given_a_new_ScenarioStepLog()
+    {
+        var model = new ScenarioStepLog();
+        if (_mainViewModel != null)
+        {
+            _mainViewModel.ScenarioStepLogViewModel.SelectedItem = model;
+        }
+    }
+
+    private void Given_an_existing_ScenarioStepLog()
+    {
+        var model = new ScenarioStepLog { Id = 1 };
+        if (_mainViewModel != null)
+        {
+            _mainViewModel.ScenarioStepLogViewModel.SelectedItem = model;
+        }
+    }
+
+    private void Given_the_ScenarioStepLog_Id_is(int value)
+    {
+        if (_mainViewModel != null && _mainViewModel.ScenarioStepLogViewModel.SelectedItem != null)
+        {
+            _mainViewModel.ScenarioStepLogViewModel.SelectedItem.Id = value;
+        }
+    }
+
+    private void Given_the_ScenarioStepLog_Name_is(string value)
+    {
+        if (_mainViewModel != null && _mainViewModel.ScenarioStepLogViewModel.SelectedItem != null)
+        {
+            _mainViewModel.ScenarioStepLogViewModel.SelectedItem.Name = value;
+        }
+    }
+
+    private void Given_the_ScenarioStepLog_IsPassing_is(bool value)
+    {
+        if (_mainViewModel != null && _mainViewModel.ScenarioStepLogViewModel.SelectedItem != null)
+        {
+            _mainViewModel.ScenarioStepLogViewModel.SelectedItem.IsPassing = value;
+        }
+    }
+
+    private void Given_the_ScenarioStepLog_StartOfStep_is(string value)
+    {
+        if (_mainViewModel != null && _mainViewModel.ScenarioStepLogViewModel.SelectedItem != null)
+        {
+            var _ = DateTime.TryParse(value, out var dt);
+            _mainViewModel.ScenarioStepLogViewModel.SelectedItem.StartOfStep = dt;
+        }
+    }
+    
+    private void Given_the_ScenarioStepLog_EndOfStep_is(string value)
+    {
+        if (_mainViewModel != null && _mainViewModel.ScenarioStepLogViewModel.SelectedItem != null)
+        {
+            var _ = DateTime.TryParse(value, out var dt);
+            _mainViewModel.ScenarioStepLogViewModel.SelectedItem.EndOfStep = dt;
+        }
+    }
+
+    private void Given_there_are_2_ScenarioStepLog_that_are_not_new()
+    {
+        var one = new ScenarioStepLog
+        {
+            Id = 1,
+            Name = "ExistingTestStep",
+            StartOfStep = DateTime.Parse("2022-08-14 08:25:30"),
+            EndOfStep = DateTime.Parse("2022-08-14 08:26:18")
+        };
+        var two = one.Clone();
+        if (two == null) return;
+        two.Id = 2;
+        _mockDbConnection.SetupDapperAsync(c => c.QueryAsync<ScenarioStepLog>(
+            It.IsAny<string>(), null, null, null, null))
+            .ReturnsAsync(new[] { one, two });
+    }
+
+    private void Given_the_ScenarioStepLog_IsPassing_is_toggled_to(bool value)
+    {
+        Given_the_ScenarioStepLog_IsPassing_is(value);
+    }
+
 
     private void When_a_Standard_User_clicks_Add()
     {
         _mainViewModel?.ScenarioStepLogsViewModel.AddCmd.Execute(null);
     }
 
-
-    private void Then_a_new_ScenarioStepLog_is_available()
+    private void When_a_Standard_User_clicks_Save()
     {
-        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem);
+        _mockDbConnection.SetupDapperAsync(c => c.ExecuteScalarAsync<int>(
+            It.IsAny<string>(), null, null, null, null)).ReturnsAsync(1);
+        
+        _mainViewModel?.ScenarioStepLogViewModel.SaveCmd.Execute(null);
+    }
+
+    private async Task When_a_Standard_User_opens_the_main_view()
+    {
+        await _mainViewModel?.LoadAsync()!;
+    }
+
+    private void When_a_Standard_User_clicks_Delete()
+    {
+        _mockDbConnection.SetupDapperAsync(c => c.QueryAsync<ScenarioStepLog>(
+            It.IsAny<string>(), null, null, null, null));
+
+        _mainViewModel?.ScenarioStepLogViewModel.DeleteCmd.Execute(null);
     }
 
 
-    private static ScenarioStepLog GetNewModel()
+    private void Then_a_new_ScenarioStepLog_is_available()
     {
-        return new ScenarioStepLog
-        {
-            Name = "TestStep",
-            StartOfStep = new DateTime(2022, 8, 14, 8, 25, 30),
-            EndOfStep = new DateTime(2022, 8, 14, 8, 26, 18),
-        };
+        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
+
+    private void Then_the_saved_ScenarioStepLog_is_not_new()
+    {
+        Assert.IsTrue(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem?.Id > 0,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
+
+    private void Then_the_ScenarioStepLog_Name_is(string value)
+    {
+        Assert.AreEqual(value, _mainViewModel?.ScenarioStepLogViewModel.SelectedItem?.Name,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
+    
+    private void Then_the_ScenarioStepLog_IsPassing_is(bool value)
+    {
+        Assert.AreEqual(value, _mainViewModel?.ScenarioStepLogViewModel.SelectedItem?.IsPassing,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
+
+    private void Then_the_saved_ScenarioStepLog_StartOfStep_is(string value)
+    {
+        var _ = DateTime.TryParse(value, out var dt);
+        Assert.AreEqual(dt, _mainViewModel?.ScenarioStepLogViewModel.SelectedItem?.StartOfStep,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
+    
+    private void Then_the_saved_ScenarioStepLog_EndOfStep_is(string value)
+    {
+        var _ = DateTime.TryParse(value, out var dt);
+        Assert.AreEqual(dt, _mainViewModel?.ScenarioStepLogViewModel.SelectedItem?.EndOfStep,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
+
+    private void Then_2_ScenarioStepLogs_are_listed()
+    {
+        Assert.AreEqual(2, _mainViewModel?.ScenarioStepLogsViewModel.Index.Count,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
+
+    private void Then_the_ScenarioStepLog_Id_is(int id)
+    {
+        Assert.AreEqual(id, _mainViewModel?.ScenarioStepLogViewModel.SelectedItem?.Id,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
+
+    private void Then_the_ScenarioStepLog_is_gone()
+    {
+        Assert.IsNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem,
+            MethodBase.GetCurrentMethod()?.Name);
     }
 
 }

@@ -9,5 +9,11 @@ namespace Bunsen.Utils
         {
             return JsonConvert.SerializeObject(dict);
         }
+
+        public static T? Clone<T>(this T t) where T : class
+        {
+            return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(t));
+        }
+        
     }
 }
