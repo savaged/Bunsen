@@ -141,19 +141,19 @@ namespace Bunsen.Specs.Features
         testRunner.Given("a new ScenarioStepLog", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
-        testRunner.Given("the ScenarioStepLog Id is 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog Id is 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-        testRunner.Given("the ScenarioStepLog Name is \'TestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog Name is \'TestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
-        testRunner.Given("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
-        testRunner.Given("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
-        testRunner.Given("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
         testRunner.When("a Standard User clicks Save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -162,19 +162,19 @@ namespace Bunsen.Specs.Features
         testRunner.Then("a saved ScenarioStepLog is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 16
-        testRunner.Then("the saved ScenarioStepLog is not new", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And("the saved ScenarioStepLog is not new", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 17
-        testRunner.Then("the ScenarioStepLog Name is \'TestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And("the ScenarioStepLog Name is \'TestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 18
-        testRunner.Then("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 19
-        testRunner.Then("the saved ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And("the saved ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 20
-        testRunner.Then("the saved ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And("the saved ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -233,19 +233,19 @@ namespace Bunsen.Specs.Features
         testRunner.Given("an existing ScenarioStepLog", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 29
-        testRunner.Given("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 30
-        testRunner.Given("the ScenarioStepLog Name is \'UpdatedTestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog Name is \'UpdatedTestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 31
-        testRunner.Given("the ScenarioStepLog IsPassing is toggled to true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog IsPassing is toggled to true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 32
-        testRunner.Given("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 33
-        testRunner.Given("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 34
         testRunner.When("a Standard User clicks Save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -254,19 +254,19 @@ namespace Bunsen.Specs.Features
         testRunner.Then("the ScenarioStepLog is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 36
-        testRunner.Then("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 37
-        testRunner.Then("the ScenarioStepLog Name is \'UpdatedTestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And("the ScenarioStepLog Name is \'UpdatedTestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 38
-        testRunner.Then("the ScenarioStepLog IsPassing is true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And("the ScenarioStepLog IsPassing is true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 39
-        testRunner.Then("the saved ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And("the saved ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 40
-        testRunner.Then("the saved ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And("the saved ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -294,19 +294,19 @@ namespace Bunsen.Specs.Features
         testRunner.Given("an existing ScenarioStepLog", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 44
-        testRunner.Given("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 45
-        testRunner.Given("the ScenarioStepLog Name is \'DeleteMe\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog Name is \'DeleteMe\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 46
-        testRunner.Given("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 47
-        testRunner.Given("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 48
-        testRunner.Given("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.And("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 49
         testRunner.When("a Standard User clicks Delete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
