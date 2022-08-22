@@ -144,16 +144,16 @@ namespace Bunsen.Specs.Features
         testRunner.And("the ScenarioStepLog Id is 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-        testRunner.And("the ScenarioStepLog Name is \'TestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the ScenarioStepLog Name is <InitialName>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
         testRunner.And("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
-        testRunner.And("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the ScenarioStepLog StartOfStep is <StartOfStep>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
-        testRunner.And("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the ScenarioStepLog EndOfStep is <EndOfStep>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
         testRunner.When("a Standard User clicks Save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -165,16 +165,16 @@ namespace Bunsen.Specs.Features
         testRunner.And("the saved ScenarioStepLog is not new", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 17
-        testRunner.And("the ScenarioStepLog Name is \'TestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the ScenarioStepLog Name is <InitialName>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 18
         testRunner.And("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 19
-        testRunner.And("the saved ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the saved ScenarioStepLog StartOfStep is <StartOfStep>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 20
-        testRunner.And("the saved ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the saved ScenarioStepLog EndOfStep is <EndOfStep>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -236,16 +236,16 @@ namespace Bunsen.Specs.Features
         testRunner.And("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 30
-        testRunner.And("the ScenarioStepLog Name is \'UpdatedTestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the ScenarioStepLog Name is <UpdatedName>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 31
         testRunner.And("the ScenarioStepLog IsPassing is toggled to true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 32
-        testRunner.And("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the ScenarioStepLog StartOfStep is <StartOfStep>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 33
-        testRunner.And("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the ScenarioStepLog EndOfStep is <EndOfStep>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 34
         testRunner.When("a Standard User clicks Save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -257,28 +257,29 @@ namespace Bunsen.Specs.Features
         testRunner.And("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 37
-        testRunner.And("the ScenarioStepLog Name is \'UpdatedTestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the ScenarioStepLog Name is <UpdatedName>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 38
         testRunner.And("the ScenarioStepLog IsPassing is true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 39
-        testRunner.And("the saved ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the saved ScenarioStepLog StartOfStep is <StartOfStep>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 40
-        testRunner.And("the saved ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("the saved ScenarioStepLog EndOfStep is <EndOfStep>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A Standard User deletes an existing ScenarioStepLog")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ScenarioStepLog ViewModels CRUD")]
-        public void AStandardUserDeletesAnExistingScenarioStepLog()
+        public virtual void AStandardUserDeletesAnExistingScenarioStepLog(string initialName, string updatedName, string startOfStep, string endOfStep, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("InitialName", initialName);
+            argumentsOfScenario.Add("UpdatedName", updatedName);
+            argumentsOfScenario.Add("StartOfStep", startOfStep);
+            argumentsOfScenario.Add("EndOfStep", endOfStep);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A Standard User deletes an existing ScenarioStepLog", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 42
     this.ScenarioInitialize(scenarioInfo);
@@ -297,16 +298,16 @@ namespace Bunsen.Specs.Features
         testRunner.And("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 45
-        testRunner.And("the ScenarioStepLog Name is \'DeleteMe\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And(string.Format("the ScenarioStepLog Name is {0}", updatedName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 46
         testRunner.And("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 47
-        testRunner.And("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And(string.Format("the ScenarioStepLog StartOfStep is {0}", startOfStep), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 48
-        testRunner.And("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And(string.Format("the ScenarioStepLog EndOfStep is {0}", endOfStep), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 49
         testRunner.When("a Standard User clicks Delete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -316,6 +317,21 @@ namespace Bunsen.Specs.Features
 #line hidden
             }
             this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A Standard User deletes an existing ScenarioStepLog: \'TestStep\'")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ScenarioStepLog ViewModels CRUD")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "\'TestStep\'")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InitialName", "\'TestStep\'")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:UpdatedName", "\'UpdatedTestStep\'")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StartOfStep", "\'2022-08-14 08:25:30\'")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:EndOfStep", "\'2022-08-14 08:26:18\'")]
+        public void AStandardUserDeletesAnExistingScenarioStepLog_TestStep()
+        {
+#line 42
+    this.AStandardUserDeletesAnExistingScenarioStepLog("\'TestStep\'", "\'UpdatedTestStep\'", "\'2022-08-14 08:25:30\'", "\'2022-08-14 08:26:18\'", ((string[])(null)));
+#line hidden
         }
     }
 }
