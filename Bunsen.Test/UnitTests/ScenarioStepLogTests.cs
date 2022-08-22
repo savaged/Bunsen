@@ -17,4 +17,12 @@ public class ScenarioStepLogTests
         var result = model.CalculateSecondsTakenOfStep();
         Assert.AreEqual(48, result);
     }
+
+    [TestMethod]
+    public void Temp()
+    {
+        var _ = DateTime.TryParse("2022-08-14 08:25:30", out var dt);
+        Assert.AreEqual(new DateTime(2022, 8, 14, 8, 25, 30), dt);
+    }
+
 }

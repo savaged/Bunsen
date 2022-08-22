@@ -39,18 +39,18 @@ public class Feature__ScenarioStepLog_CRUD
     public void Scenario__A_Standard_User_saves_a_new_ScenarioStepLog()
     {
         Given_a_new_ScenarioStepLog();
-        Given_the_ScenarioStepLog_Id_is(0);
+        Given_the_ScenarioStepLog_Id_is_zero();
         Given_the_ScenarioStepLog_Name_is("TestStep");
-        Given_the_ScenarioStepLog_IsPassing_is(false);
+        Given_the_ScenarioStepLog_IsPassing_is_false();
         Given_the_ScenarioStepLog_StartOfStep_is("2022-08-14 08:25:30");
         Given_the_ScenarioStepLog_EndOfStep_is("2022-08-14 08:26:18");
 
         When_a_Standard_User_clicks_Save();
 
-        Then_a_new_ScenarioStepLog_is_available();
+        Then_a_saved_ScenarioStepLog_is_available();
         Then_the_saved_ScenarioStepLog_is_not_new();
         Then_the_ScenarioStepLog_Name_is("TestStep");
-        Then_the_ScenarioStepLog_IsPassing_is(false);
+        Then_the_ScenarioStepLog_IsPassing_is_false();
         Then_the_saved_ScenarioStepLog_StartOfStep_is("2022-08-14 08:25:30");
         Then_the_saved_ScenarioStepLog_EndOfStep_is("2022-08-14 08:26:18");
     }
@@ -71,7 +71,7 @@ public class Feature__ScenarioStepLog_CRUD
         Given_an_existing_ScenarioStepLog();
         Given_the_ScenarioStepLog_Id_is(1);
         Given_the_ScenarioStepLog_Name_is("UpdatedTestStep");
-        Given_the_ScenarioStepLog_IsPassing_is_toggled_to(true);
+        Given_the_ScenarioStepLog_IsPassing_is_toggled_to_true();
         Given_the_ScenarioStepLog_StartOfStep_is("2022-08-14 08:25:30");
         Given_the_ScenarioStepLog_EndOfStep_is("2022-08-14 08:26:18");
 
@@ -80,7 +80,7 @@ public class Feature__ScenarioStepLog_CRUD
         Then_the_ScenarioStepLog_is_available();
         Then_the_ScenarioStepLog_Id_is(1);
         Then_the_ScenarioStepLog_Name_is("UpdatedTestStep");
-        Then_the_ScenarioStepLog_IsPassing_is(true);
+        Then_the_ScenarioStepLog_IsPassing_is_true();
         Then_the_saved_ScenarioStepLog_StartOfStep_is("2022-08-14 08:25:30");
         Then_the_saved_ScenarioStepLog_EndOfStep_is("2022-08-14 08:26:18");
     }
@@ -91,7 +91,7 @@ public class Feature__ScenarioStepLog_CRUD
         Given_an_existing_ScenarioStepLog();
         Given_the_ScenarioStepLog_Id_is(1);
         Given_the_ScenarioStepLog_Name_is("DeleteMe");
-        Given_the_ScenarioStepLog_IsPassing_is(false);
+        Given_the_ScenarioStepLog_IsPassing_is_false();
         Given_the_ScenarioStepLog_StartOfStep_is("2022-08-14 08:25:30");
         Given_the_ScenarioStepLog_EndOfStep_is("2022-08-14 08:26:18");
 
@@ -140,6 +140,11 @@ public class Feature__ScenarioStepLog_CRUD
         }
     }
 
+    private void Given_the_ScenarioStepLog_Id_is_zero()
+    {
+        Given_the_ScenarioStepLog_Id_is(0);
+    }
+
     private void Given_the_ScenarioStepLog_Id_is(int value)
     {
         if (_mainViewModel != null && _mainViewModel.ScenarioStepLogViewModel.SelectedItem != null)
@@ -156,11 +161,19 @@ public class Feature__ScenarioStepLog_CRUD
         }
     }
 
-    private void Given_the_ScenarioStepLog_IsPassing_is(bool value)
+    private void Given_the_ScenarioStepLog_IsPassing_is_true()
     {
         if (_mainViewModel != null && _mainViewModel.ScenarioStepLogViewModel.SelectedItem != null)
         {
-            _mainViewModel.ScenarioStepLogViewModel.SelectedItem.IsPassing = value;
+            _mainViewModel.ScenarioStepLogViewModel.SelectedItem.IsPassing = true;
+        }
+    }
+
+    private void Given_the_ScenarioStepLog_IsPassing_is_false()
+    {
+        if (_mainViewModel != null && _mainViewModel.ScenarioStepLogViewModel.SelectedItem != null)
+        {
+            _mainViewModel.ScenarioStepLogViewModel.SelectedItem.IsPassing = false;
         }
     }
 
@@ -199,9 +212,9 @@ public class Feature__ScenarioStepLog_CRUD
             .ReturnsAsync(new[] { one, two });
     }
 
-    private void Given_the_ScenarioStepLog_IsPassing_is_toggled_to(bool value)
+    private void Given_the_ScenarioStepLog_IsPassing_is_toggled_to_true()
     {
-        Given_the_ScenarioStepLog_IsPassing_is(value);
+        Given_the_ScenarioStepLog_IsPassing_is_true();
     }
 
 
@@ -237,6 +250,12 @@ public class Feature__ScenarioStepLog_CRUD
         Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem,
             MethodBase.GetCurrentMethod()?.Name);
     }
+
+    private void Then_a_saved_ScenarioStepLog_is_available()
+    {
+        Assert.IsNotNull(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
     
     private void Then_the_ScenarioStepLog_is_available()
     {
@@ -256,9 +275,15 @@ public class Feature__ScenarioStepLog_CRUD
             MethodBase.GetCurrentMethod()?.Name);
     }
     
-    private void Then_the_ScenarioStepLog_IsPassing_is(bool value)
+    private void Then_the_ScenarioStepLog_IsPassing_is_false()
     {
-        Assert.AreEqual(value, _mainViewModel?.ScenarioStepLogViewModel.SelectedItem?.IsPassing,
+        Assert.IsFalse(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem?.IsPassing,
+            MethodBase.GetCurrentMethod()?.Name);
+    }
+
+    private void Then_the_ScenarioStepLog_IsPassing_is_true()
+    {
+        Assert.IsTrue(_mainViewModel?.ScenarioStepLogViewModel.SelectedItem?.IsPassing,
             MethodBase.GetCurrentMethod()?.Name);
     }
 
