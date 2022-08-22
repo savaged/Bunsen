@@ -94,14 +94,12 @@ namespace Bunsen.Specs.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A Standard User adds a ScenarioStepLog")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ScenarioStepLog ViewModels CRUD")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("scenarioStepLogViewModelsCRUD")]
         public void AStandardUserAddsAScenarioStepLog()
         {
-            string[] tagsOfScenario = new string[] {
-                    "scenarioStepLogViewModelsCRUD"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A Standard User adds a ScenarioStepLog", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 4
+#line 3
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -111,10 +109,10 @@ namespace Bunsen.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 5
+#line 4
         testRunner.When("a Standard User clicks Add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 6
+#line 5
         testRunner.Then("a new ScenarioStepLog is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -124,14 +122,12 @@ namespace Bunsen.Specs.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A Standard User saves a new ScenarioStepLog")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ScenarioStepLog ViewModels CRUD")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("scenarioStepLogViewModelsCRUD")]
         public void AStandardUserSavesANewScenarioStepLog()
         {
-            string[] tagsOfScenario = new string[] {
-                    "scenarioStepLogViewModelsCRUD"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A Standard User saves a new ScenarioStepLog", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 9
+#line 7
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -141,43 +137,43 @@ namespace Bunsen.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 10
+#line 8
         testRunner.Given("a new ScenarioStepLog", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 11
+#line 9
         testRunner.Given("the ScenarioStepLog Id is 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 12
+#line 10
         testRunner.Given("the ScenarioStepLog Name is \'TestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 13
+#line 11
         testRunner.Given("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 14
+#line 12
         testRunner.Given("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
+#line 13
         testRunner.Given("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 16
+#line 14
         testRunner.When("a Standard User clicks Save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 17
+#line 15
         testRunner.Then("a saved ScenarioStepLog is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 18
+#line 16
         testRunner.Then("the saved ScenarioStepLog is not new", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 19
+#line 17
         testRunner.Then("the ScenarioStepLog Name is \'TestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 20
+#line 18
         testRunner.Then("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 21
+#line 19
         testRunner.Then("the saved ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 22
+#line 20
         testRunner.Then("the saved ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -187,14 +183,12 @@ namespace Bunsen.Specs.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A Standard User lists all ScenarioStepLogs")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ScenarioStepLog ViewModels CRUD")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("scenarioStepLogViewModelsCRUD")]
         public void AStandardUserListsAllScenarioStepLogs()
         {
-            string[] tagsOfScenario = new string[] {
-                    "scenarioStepLogViewModelsCRUD"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A Standard User lists all ScenarioStepLogs", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 25
+#line 22
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -204,13 +198,13 @@ namespace Bunsen.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 26
+#line 23
         testRunner.Given("there are 2 ScenarioStepLog that are not new", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 27
+#line 24
         testRunner.When("a Standard User opens the main view", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
+#line 25
         testRunner.Then("2 ScenarioStepLogs are listed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -220,14 +214,12 @@ namespace Bunsen.Specs.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A Standard User saves an existing ScenarioStepLog")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ScenarioStepLog ViewModels CRUD")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("scenarioStepLogViewModelsCRUD")]
         public void AStandardUserSavesAnExistingScenarioStepLog()
         {
-            string[] tagsOfScenario = new string[] {
-                    "scenarioStepLogViewModelsCRUD"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A Standard User saves an existing ScenarioStepLog", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 31
+#line 27
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -237,43 +229,43 @@ namespace Bunsen.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 32
+#line 28
         testRunner.Given("an existing ScenarioStepLog", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 33
+#line 29
         testRunner.Given("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 34
+#line 30
         testRunner.Given("the ScenarioStepLog Name is \'UpdatedTestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 35
+#line 31
         testRunner.Given("the ScenarioStepLog IsPassing is toggled to true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 36
+#line 32
         testRunner.Given("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 37
+#line 33
         testRunner.Given("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 38
+#line 34
         testRunner.When("a Standard User clicks Save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 39
+#line 35
         testRunner.Then("the ScenarioStepLog is available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 40
+#line 36
         testRunner.Then("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 41
+#line 37
         testRunner.Then("the ScenarioStepLog Name is \'UpdatedTestStep\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 42
+#line 38
         testRunner.Then("the ScenarioStepLog IsPassing is true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 43
+#line 39
         testRunner.Then("the saved ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 44
+#line 40
         testRunner.Then("the saved ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -283,14 +275,12 @@ namespace Bunsen.Specs.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A Standard User deletes an existing ScenarioStepLog")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ScenarioStepLog ViewModels CRUD")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("scenarioStepLogViewModelsCRUD")]
         public void AStandardUserDeletesAnExistingScenarioStepLog()
         {
-            string[] tagsOfScenario = new string[] {
-                    "scenarioStepLogViewModelsCRUD"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A Standard User deletes an existing ScenarioStepLog", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 47
+#line 42
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -300,28 +290,28 @@ namespace Bunsen.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 48
+#line 43
         testRunner.Given("an existing ScenarioStepLog", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 49
+#line 44
         testRunner.Given("the ScenarioStepLog Id is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 50
+#line 45
         testRunner.Given("the ScenarioStepLog Name is \'DeleteMe\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 51
+#line 46
         testRunner.Given("the ScenarioStepLog IsPassing is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 52
+#line 47
         testRunner.Given("the ScenarioStepLog StartOfStep is \'2022-08-14 08:25:30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 53
+#line 48
         testRunner.Given("the ScenarioStepLog EndOfStep is \'2022-08-14 08:26:18\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 54
+#line 49
         testRunner.When("a Standard User clicks Delete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 55
+#line 50
         testRunner.Then("the ScenarioStepLog is gone", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

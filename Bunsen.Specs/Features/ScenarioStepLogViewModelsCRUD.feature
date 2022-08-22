@@ -1,11 +1,9 @@
 ﻿Feature: ScenarioStepLog ViewModels CRUD
 
-    @scenarioStepLogViewModelsCRUD
     Scenario: A Standard User adds a ScenarioStepLog 
         When a Standard User clicks Add 
         Then a new ScenarioStepLog is available 
 
-    @scenarioStepLogViewModelsCRUD
     Scenario: A Standard User saves a new ScenarioStepLog 
         Given a new ScenarioStepLog 
         Given the ScenarioStepLog Id is 0 
@@ -21,13 +19,11 @@
         Then the saved ScenarioStepLog StartOfStep is '2022-08-14 08:25:30'
         Then the saved ScenarioStepLog EndOfStep is '2022-08-14 08:26:18'
 
-    @scenarioStepLogViewModelsCRUD
     Scenario: A Standard User lists all ScenarioStepLogs 
         Given there are 2 ScenarioStepLog that are not new 
         When a Standard User opens the main view 
         Then 2 ScenarioStepLogs are listed 
 
-    @scenarioStepLogViewModelsCRUD
     Scenario: A Standard User saves an existing ScenarioStepLog 
         Given an existing ScenarioStepLog
         Given the ScenarioStepLog Id is 1
@@ -43,7 +39,6 @@
         Then the saved ScenarioStepLog StartOfStep is '2022-08-14 08:25:30'
         Then the saved ScenarioStepLog EndOfStep is '2022-08-14 08:26:18'
 
-    @scenarioStepLogViewModelsCRUD
     Scenario: A Standard User deletes an existing ScenarioStepLog 
         Given an existing ScenarioStepLog 
         Given the ScenarioStepLog Id is 1
